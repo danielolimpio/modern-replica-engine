@@ -1,6 +1,7 @@
 @import "tailwindcss" source(none);
 @source "../src";
 @import "tw-animate-css";
+@plugin "@tailwindcss/typography";
 
 @custom-variant dark (&:is(.dark *));
 
@@ -59,29 +60,57 @@
   --color-sidebar-accent-foreground: var(--sidebar-accent-foreground);
   --color-sidebar-border: var(--sidebar-border);
   --color-sidebar-ring: var(--sidebar-ring);
+  --color-primary-glow: var(--primary-glow);
+  --color-cat-automotive: var(--cat-automotive);
+  --color-cat-education: var(--cat-education);
+  --color-cat-health: var(--cat-health);
+  --color-cat-insurance: var(--cat-insurance);
+  --color-cat-lawyers: var(--cat-lawyers);
+  --color-cat-realestate: var(--cat-realestate);
+  --font-serif: "Playfair Display", Georgia, serif;
+  --font-sans: "Inter", system-ui, sans-serif;
 }
 
 :root {
-  --radius: 0.625rem;
-  --background: oklch(1 0 0);
-  --foreground: oklch(0.129 0.042 264.695);
+  --radius: 0.5rem;
+  /* Base — clean editorial white */
+  --background: oklch(0.995 0.002 240);
+  --foreground: oklch(0.16 0.02 260);
   --card: oklch(1 0 0);
-  --card-foreground: oklch(0.129 0.042 264.695);
+  --card-foreground: oklch(0.16 0.02 260);
   --popover: oklch(1 0 0);
-  --popover-foreground: oklch(0.129 0.042 264.695);
-  --primary: oklch(0.208 0.042 265.755);
-  --primary-foreground: oklch(0.984 0.003 247.858);
-  --secondary: oklch(0.968 0.007 247.896);
-  --secondary-foreground: oklch(0.208 0.042 265.755);
-  --muted: oklch(0.968 0.007 247.896);
-  --muted-foreground: oklch(0.554 0.046 257.417);
-  --accent: oklch(0.968 0.007 247.896);
-  --accent-foreground: oklch(0.208 0.042 265.755);
+  --popover-foreground: oklch(0.16 0.02 260);
+  /* Brand — deep patriot blue (like the original site nav) */
+  --primary: oklch(0.42 0.18 258);
+  --primary-foreground: oklch(0.99 0 0);
+  --primary-glow: oklch(0.55 0.2 255);
+  /* Accent — trust red (from the logo) */
+  --accent: oklch(0.57 0.22 26);
+  --accent-foreground: oklch(0.99 0 0);
+  /* Neutral surfaces */
+  --secondary: oklch(0.965 0.01 250);
+  --secondary-foreground: oklch(0.2 0.03 260);
+  --muted: oklch(0.965 0.008 250);
+  --muted-foreground: oklch(0.5 0.02 260);
   --destructive: oklch(0.577 0.245 27.325);
   --destructive-foreground: oklch(0.984 0.003 247.858);
-  --border: oklch(0.929 0.013 255.508);
-  --input: oklch(0.929 0.013 255.508);
-  --ring: oklch(0.704 0.04 256.788);
+  --border: oklch(0.92 0.008 255);
+  --input: oklch(0.92 0.008 255);
+  --ring: oklch(0.55 0.18 258);
+  /* Category colors (badges) */
+  --cat-automotive: oklch(0.6 0.2 30);
+  --cat-education: oklch(0.55 0.18 155);
+  --cat-health: oklch(0.6 0.17 200);
+  --cat-insurance: oklch(0.5 0.2 258);
+  --cat-lawyers: oklch(0.5 0.17 280);
+  --cat-realestate: oklch(0.62 0.17 60);
+  /* Elevation & motion */
+  --shadow-sm: 0 1px 2px 0 oklch(0.16 0.02 260 / 0.06);
+  --shadow-md: 0 8px 24px -8px oklch(0.16 0.02 260 / 0.12);
+  --shadow-lg: 0 24px 48px -18px oklch(0.16 0.02 260 / 0.18);
+  --gradient-hero: linear-gradient(135deg, oklch(0.32 0.15 258) 0%, oklch(0.22 0.1 260) 60%, oklch(0.16 0.08 265) 100%);
+  --gradient-brand: linear-gradient(90deg, var(--primary), var(--primary-glow));
+  --gradient-overlay: linear-gradient(180deg, transparent 30%, oklch(0.12 0.05 260 / 0.85) 100%);
   --chart-1: oklch(0.646 0.222 41.116);
   --chart-2: oklch(0.6 0.118 184.704);
   --chart-3: oklch(0.398 0.07 227.392);
