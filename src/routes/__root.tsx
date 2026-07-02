@@ -80,10 +80,14 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
       { title: "Trust All America — Insurance, Health Plans & Financial Security" },
       { name: "description", content: "Your trusted source for insurance, health plans, automotive, real estate, education and legal insights across the United States." },
       { name: "author", content: "Trust All America" },
-      { property: "og:title", content: "Trust All America" },
-      { property: "og:description", content: "Your trusted source for insurance, health plans, and financial security." },
+      { property: "og:title", content: "Trust All America — Insurance, Health Plans & Financial Security" },
+      { property: "og:description", content: "Your trusted source for insurance, health plans, automotive, real estate, education and legal insights across the United States." },
       { property: "og:type", content: "website" },
       { name: "twitter:card", content: "summary_large_image" },
+      { name: "twitter:title", content: "Trust All America — Insurance, Health Plans & Financial Security" },
+      { name: "twitter:description", content: "Your trusted source for insurance, health plans, automotive, real estate, education and legal insights across the United States." },
+      { property: "og:image", content: "https://pub-bb2e103a32db4e198524a2e9ed8f35b4.r2.dev/013b2587-833b-498f-8e57-fc70df68e2e3/id-preview-2e50492c--354c2ee1-d415-4ca7-94e2-43a383ae01ce.lovable.app-1783026253362.png" },
+      { name: "twitter:image", content: "https://pub-bb2e103a32db4e198524a2e9ed8f35b4.r2.dev/013b2587-833b-498f-8e57-fc70df68e2e3/id-preview-2e50492c--354c2ee1-d415-4ca7-94e2-43a383ae01ce.lovable.app-1783026253362.png" },
     ],
     links: [
       {
