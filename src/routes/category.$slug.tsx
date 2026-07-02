@@ -2,7 +2,7 @@ import { createFileRoute, notFound, Link } from "@tanstack/react-router";
 import { Layout } from "@/components/site/Layout";
 import { PostCard } from "@/components/site/PostCard";
 import { Sidebar } from "@/components/site/Sidebar";
-import { categoryBySlug, postsByCategory } from "@/lib/posts";
+import { categoryBySlug, postsByCategory, type Post } from "@/lib/posts";
 
 export const Route = createFileRoute("/category/$slug")({
   head: ({ params }) => {
@@ -50,7 +50,7 @@ function CategoryPage() {
         <div>
           {featured && <div className="mb-8"><PostCard post={featured} variant="featured" /></div>}
           <div className="grid gap-6 sm:grid-cols-2">
-            {rest.map((p) => <PostCard key={p.slug} post={p} />)}
+            {rest.map((p: Post) => <PostCard key={p.slug} post={p} />)}
           </div>
         </div>
         <Sidebar />
