@@ -6,6 +6,26 @@ import { Sidebar } from "@/components/site/Sidebar";
 import { categories, posts, postsByCategory } from "@/lib/posts";
 
 export const Route = createFileRoute("/")({
+  head: () => {
+    const url = "https://modern-replica-engine.lovable.app/";
+    return {
+      meta: [
+        { property: "og:url", content: url },
+      ],
+      links: [{ rel: "canonical", href: url }],
+      scripts: [
+        {
+          type: "application/ld+json",
+          children: JSON.stringify({
+            "@context": "https://schema.org",
+            "@type": "WebSite",
+            name: "Trust All America",
+            url,
+          }),
+        },
+      ],
+    };
+  },
   component: Home,
 });
 

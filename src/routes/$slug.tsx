@@ -10,7 +10,15 @@ import { formatDate, getPost, relatedPosts, type Post } from "@/lib/posts";
 export const Route = createFileRoute("/$slug")({
   head: ({ params }) => {
     const post = getPost(params.slug);
-    if (!post) return { meta: [{ title: "Article — Trust All America" }] };
+    const url = `https://modern-replica-engine.lovable.app/${params.slug}`;
+    if (!post) {
+      return {
+        meta: [
+          { title: "Article not found — Trust All America" },
+          { name: "robots", content: "noindex" },
+        ],
+      };
+    }
     const desc = post.excerpt.slice(0, 155);
     const meta: Array<Record<string, string>> = [
       { title: `${post.title} — Trust All America` },
@@ -18,12 +26,41 @@ export const Route = createFileRoute("/$slug")({
       { property: "og:title", content: post.title },
       { property: "og:description", content: desc },
       { property: "og:type", content: "article" },
+      { property: "og:url", content: url },
+      { property: "article:published_time", content: new Date(post.date).toISOString() },
+      { name: "twitter:card", content: "summary_large_image" },
+      { name: "twitter:title", content: post.title },
+      { name: "twitter:description", content: desc },
     ];
     if (post.thumb) {
       meta.push({ property: "og:image", content: post.thumb });
       meta.push({ name: "twitter:image", content: post.thumb });
     }
-    return { meta };
+    return {
+      meta,
+      links: [{ rel: "canonical", href: url }],
+      scripts: [
+        {
+          type: "application/ld+json",
+          children: JSON.stringify({
+            "@context": "https://schema.org",
+            "@type": "Article",
+            headline: post.title,
+            description: desc,
+            image: post.thumb ? [post.thumb] : undefined,
+            datePublished: new Date(post.date).toISOString(),
+            dateModified: new Date(post.date).toISOString(),
+            author: { "@type": "Organization", name: "Trust All America Editorial Team" },
+            publisher: {
+              "@type": "Organization",
+              name: "Trust All America",
+            },
+            mainEntityOfPage: { "@type": "WebPage", "@id": url },
+            articleSection: post.categories,
+          }),
+        },
+      ],
+    };
   },
   loader: ({ params }) => {
     const post = getPost(params.slug);
@@ -59,7 +96,15 @@ function PostPage() {
 
         {post.thumb && (
           <div className="mx-auto max-w-5xl px-6 pt-10">
-            <img src={post.thumb} alt={post.title} className="aspect-[16/9] w-full rounded-lg object-cover shadow-[var(--shadow-md)]" />
+            <img
+              src={post.thumb}
+              alt={post.title}
+              width={1600}
+              height={900}
+              fetchPriority="high"
+              decoding="async"
+              className="aspect-[16/9] w-full rounded-lg object-cover shadow-[var(--shadow-md)]"
+            />
           </div>
         )}
 

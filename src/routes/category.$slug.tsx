@@ -9,13 +9,20 @@ export const Route = createFileRoute("/category/$slug")({
     const cat = categoryBySlug(params.slug);
     const title = cat ? `${cat.name} — Trust All America` : "Category — Trust All America";
     const desc = cat ? `Latest ${cat.name} articles, guides and insights.` : "Browse articles by category.";
+    const url = `https://modern-replica-engine.lovable.app/category/${params.slug}`;
     return {
       meta: [
         { title },
         { name: "description", content: desc },
         { property: "og:title", content: title },
         { property: "og:description", content: desc },
+        { property: "og:type", content: "website" },
+        { property: "og:url", content: url },
+        { name: "twitter:card", content: "summary_large_image" },
+        { name: "twitter:title", content: title },
+        { name: "twitter:description", content: desc },
       ],
+      links: [{ rel: "canonical", href: url }],
     };
   },
   loader: ({ params }) => {
