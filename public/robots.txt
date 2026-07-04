@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://modern-replica-engine.lovable.app/sitemap.xml
