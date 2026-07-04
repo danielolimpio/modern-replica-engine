@@ -30,7 +30,7 @@ function Home() {
             {heroSide.map((p) => (
               <Link
                 key={p.slug}
-                to="/post/$slug"
+                to="/$slug"
                 params={{ slug: p.slug }}
                 className="group relative block aspect-[16/10] overflow-hidden rounded-md bg-secondary lg:aspect-[16/9]"
               >
@@ -79,7 +79,7 @@ function Home() {
             </div>
           </div>
           <div className="grid gap-6 md:grid-cols-2">
-            <Link to="/post/$slug" params={{ slug: posts[2]?.slug ?? posts[0].slug }} className="group relative block aspect-[16/10] overflow-hidden rounded-lg bg-black/20">
+            <Link to="/$slug" params={{ slug: posts[2]?.slug ?? posts[0].slug }} className="group relative block aspect-[16/10] overflow-hidden rounded-lg bg-black/20">
               {posts[2]?.thumb && <img src={posts[2].thumb} alt="" className="absolute inset-0 h-full w-full object-cover transition duration-700 group-hover:scale-105" />}
               <div className="absolute inset-0" style={{ background: "var(--gradient-overlay)" }} />
               <div className="absolute bottom-0 p-6">
@@ -89,7 +89,7 @@ function Home() {
             </Link>
             <div className="grid gap-4">
               {posts.slice(3, 6).map((p) => (
-                <Link key={p.slug} to="/post/$slug" params={{ slug: p.slug }} className="group grid grid-cols-[120px_1fr] gap-4 rounded-md p-2 transition hover:bg-white/5">
+                <Link key={p.slug} to="/$slug" params={{ slug: p.slug }} className="group grid grid-cols-[120px_1fr] gap-4 rounded-md p-2 transition hover:bg-white/5">
                   <div className="relative aspect-[4/3] overflow-hidden rounded-md bg-black/30">
                     {p.thumb && <img src={p.thumb} alt="" loading="lazy" className="h-full w-full object-cover transition duration-500 group-hover:scale-105" />}
                   </div>
@@ -111,7 +111,7 @@ function Home() {
               <SectionHeading title={cat.name} href={`/category/${cat.slug}`} />
               <div className="space-y-5">
                 {items[0] && (
-                  <Link to="/post/$slug" params={{ slug: items[0].slug }} className="group block">
+                  <Link to="/$slug" params={{ slug: items[0].slug }} className="group block">
                     <div className="relative mb-3 aspect-[16/10] overflow-hidden rounded-md bg-secondary">
                       {items[0].thumb && <img src={items[0].thumb} alt="" loading="lazy" className="h-full w-full object-cover transition duration-500 group-hover:scale-105" />}
                     </div>

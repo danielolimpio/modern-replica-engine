@@ -7,7 +7,7 @@ import { Sidebar } from "@/components/site/Sidebar";
 import { SectionHeading } from "@/components/site/SectionHeading";
 import { formatDate, getPost, relatedPosts, type Post } from "@/lib/posts";
 
-export const Route = createFileRoute("/post/$slug")({
+export const Route = createFileRoute("/$slug")({
   head: ({ params }) => {
     const post = getPost(params.slug);
     if (!post) return { meta: [{ title: "Article — Trust All America" }] };
