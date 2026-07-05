@@ -56,10 +56,12 @@ export function PostCard({ post, variant = "default" }: { post: Post; variant?: 
 
   return (
     <article className="group flex h-full flex-col overflow-hidden rounded-lg border border-border/60 bg-card transition hover:-translate-y-0.5 hover:shadow-[var(--shadow-md)]">
-      <Link to="/$slug" params={{ slug: post.slug }} className="relative block aspect-[16/10] overflow-hidden bg-secondary">
-        {post.thumb && <img src={post.thumb} alt="" loading="lazy" className="h-full w-full object-cover transition duration-500 group-hover:scale-105" />}
+      <div className="relative aspect-[16/10] overflow-hidden bg-secondary">
+        <Link to="/$slug" params={{ slug: post.slug }} className="block h-full w-full">
+          {post.thumb && <img src={post.thumb} alt="" loading="lazy" className="h-full w-full object-cover transition duration-500 group-hover:scale-105" />}
+        </Link>
         <div className="absolute left-3 top-3">{post.categories.slice(0, 1).map((c) => <CategoryBadge key={c} name={c} />)}</div>
-      </Link>
+      </div>
       <div className="flex flex-1 flex-col p-5">
         <Link to="/$slug" params={{ slug: post.slug }}>
           <h3 className="font-serif text-lg font-bold leading-snug text-foreground transition group-hover:text-primary">{post.title}</h3>
