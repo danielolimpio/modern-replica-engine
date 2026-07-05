@@ -2,6 +2,7 @@ import { Link } from "@tanstack/react-router";
 import { Menu, Search, X } from "lucide-react";
 import { useState } from "react";
 import { categories } from "@/lib/posts";
+import logoAsset from "@/assets/trust-all-america-logo.png.asset.json";
 
 export function Header() {
   const [open, setOpen] = useState(false);
@@ -18,16 +19,16 @@ export function Header() {
       </div>
 
       <div className="mx-auto flex max-w-7xl items-center justify-between gap-4 px-6 py-4">
-        <Link to="/" className="flex items-center gap-2">
-          <span className="grid h-10 w-10 place-items-center rounded-md bg-accent font-serif text-xl font-black text-accent-foreground shadow-sm">T</span>
-          <span className="flex flex-col leading-none">
-            <span className="font-serif text-xl font-black tracking-tight text-foreground">
-              Trust <span className="text-accent">All</span> America
-            </span>
-            <span className="mt-0.5 text-[10px] font-medium uppercase tracking-[0.18em] text-muted-foreground">
-              Insurance · Health · Finance
-            </span>
-          </span>
+        <Link to="/" className="flex items-center gap-3" aria-label="Trust All América — Home">
+          <img
+            src={logoAsset.url}
+            alt="Trust All América"
+            width={220}
+            height={56}
+            className="h-10 w-auto md:h-12"
+            loading="eager"
+            decoding="async"
+          />
         </Link>
 
         <nav className="hidden items-center gap-1 lg:flex">
