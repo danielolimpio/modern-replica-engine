@@ -14,7 +14,7 @@ export function Footer() {
               alt="Trust All América"
               width={240}
               height={60}
-              className="h-12 w-auto brightness-0 invert-0 [filter:drop-shadow(0_0_0_transparent)]"
+              className="h-12 w-auto"
               loading="lazy"
               decoding="async"
             />
