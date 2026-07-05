@@ -1,18 +1,24 @@
 import { Link } from "@tanstack/react-router";
 import { Mail, MapPin, Phone } from "lucide-react";
 import { categories } from "@/lib/posts";
+import logoAsset from "@/assets/trust-all-america-logo.png.asset.json";
 
 export function Footer() {
   return (
     <footer className="mt-24 bg-[oklch(0.14_0.04_260)] text-primary-foreground">
       <div className="mx-auto grid max-w-7xl gap-10 px-6 py-16 md:grid-cols-4">
         <div>
-          <div className="flex items-center gap-2">
-            <span className="grid h-10 w-10 place-items-center rounded-md bg-accent font-serif text-xl font-black">T</span>
-            <span className="font-serif text-xl font-black">
-              Trust <span className="text-accent">All</span> America
-            </span>
-          </div>
+          <Link to="/" className="inline-flex items-center" aria-label="Trust All América — Home">
+            <img
+              src={logoAsset.url}
+              alt="Trust All América"
+              width={240}
+              height={60}
+              className="h-12 w-auto brightness-0 invert-0 [filter:drop-shadow(0_0_0_transparent)]"
+              loading="lazy"
+              decoding="async"
+            />
+          </Link>
           <p className="mt-4 text-sm leading-relaxed text-primary-foreground/70">
             Your trusted source for insurance, health plans, and financial security across the United States.
           </p>
