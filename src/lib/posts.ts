@@ -11,8 +11,31 @@ export type Post = {
   thumb: string | null;
 };
 
+const CATEGORY_FALLBACK: Record<string, string> = {
+  Insurance: "https://images.unsplash.com/photo-1450101499163-c8848c66ca85?w=1600&q=80&auto=format&fit=crop",
+  "Health Plans": "https://images.unsplash.com/photo-1505751172876-fa1923c5c528?w=1600&q=80&auto=format&fit=crop",
+  Automotive: "https://images.unsplash.com/photo-1494976388531-d1058494cdd8?w=1600&q=80&auto=format&fit=crop",
+  "Real Estate": "https://images.unsplash.com/photo-1560518883-ce09059eeffa?w=1600&q=80&auto=format&fit=crop",
+  Lawyers: "https://images.unsplash.com/photo-1589994965851-a8f479c573a9?w=1600&q=80&auto=format&fit=crop",
+  Education: "https://images.unsplash.com/photo-1523240795612-9a054b0db644?w=1600&q=80&auto=format&fit=crop",
+};
+const DEFAULT_FALLBACK =
+  "https://images.unsplash.com/photo-1554224155-8d04cb21cd6c?w=1600&q=80&auto=format&fit=crop";
+
+function resolveThumb(p: Post): string {
+  const t = p.thumb ?? "";
+  // Old WordPress uploads no longer exist on the domain — replace with a
+  // stable per-category image so the layout keeps its imagery.
+  if (!t || t.includes("trustallamerica.com/wp-content")) {
+    const cat = p.categories?.[0];
+    return (cat && CATEGORY_FALLBACK[cat]) || DEFAULT_FALLBACK;
+  }
+  return t;
+}
+
 export const posts: Post[] = (postsData as Post[])
   .slice()
+  .map((p) => ({ ...p, thumb: resolveThumb(p) }))
   .sort((a, b) => new Date(b.date).getTime() - new Date(a.date).getTime());
 
 export const categories = [
